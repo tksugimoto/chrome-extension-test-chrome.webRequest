@@ -7,13 +7,13 @@ const filter = {
 
 [
 	['onBeforeRequest', ['blocking', 'requestBody']],
-	['onBeforeSendHeaders', ['requestHeaders', 'blocking']],
-	['onSendHeaders', ['requestHeaders']],
-	['onHeadersReceived', ['blocking', 'responseHeaders']],
-	['onAuthRequired', ['responseHeaders', 'blocking']],
-	['onResponseStarted', ['responseHeaders']],
-	['onBeforeRedirect', ['responseHeaders']],
-	['onCompleted', ['responseHeaders']],
+	['onBeforeSendHeaders', ['requestHeaders', 'blocking', 'extraHeaders']],
+	['onSendHeaders', ['requestHeaders', 'extraHeaders']],
+	['onHeadersReceived', ['blocking', 'responseHeaders', 'extraHeaders']],
+	['onAuthRequired', ['responseHeaders', 'blocking', 'extraHeaders']],
+	['onResponseStarted', ['responseHeaders', 'extraHeaders']],
+	['onBeforeRedirect', ['responseHeaders', 'extraHeaders']],
+	['onCompleted', ['responseHeaders', 'extraHeaders']],
 	['onErrorOccurred'],
 ].forEach(([eventName, opts]) => {
 	const callback = (details) => {
